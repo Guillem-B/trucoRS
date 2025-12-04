@@ -12,12 +12,12 @@ export const rulesData: RuleSection[] = [
   {
     id: 'hierarchy',
     title: 'Hierarquia das Cartas',
-    content: 'No Truco Gaudério, as manilhas são fixas (não existe "vira"). A ordem de força das cartas é: 1. Espadão (1 de Espadas), 2. Bastião (1 de Paus), 3. 7 de Espadas, 4. 7 de Ouros. Depois seguem: todos os 3s, todos os 2s, 1 de Copas = 1 de Ouros, todos os Reis, todas as Damas (Q), todos os Valetes (J), 7 de Copas = 7 de Paus, todos os 6s, todos os 5s, todos os 4s.'
+    content: 'No Truco Gaudério, as manilhas são fixas (não existe "vira").\n\nA ordem de força das cartas é:\n1. Espadão (1 de Espadas)\n2. Bastião (1 de Paus)\n3. 7 de Espadas\n4. 7 de Ouros\n\nDepois seguem: todos os 3s, todos os 2s, 1 de Copas = 1 de Ouros, todos os Reis, todas as Damas (Q), todos os Valetes (J), 7 de Copas = 7 de Paus, todos os 6s, todos os 5s, todos os 4s.'
   },
   {
     id: 'envido',
     title: 'Envido',
-    content: 'O Envido é uma aposta sobre quem tem a maior pontuação na mão inicial, antes de jogar as cartas. Pontuação: Cartas do mesmo naipe somam seus valores + 20. Figuras (10, 11, 12) valem 0 para a soma. Se tiver naipes diferentes, vale a carta mais alta isolada. O máximo é 33 (7+6 do mesmo naipe + 20).'
+    content: 'O Envido é uma aposta sobre quem tem a maior pontuação na mão inicial, antes de jogar as cartas.\n\nPontuação:\n• Cartas do mesmo naipe somam seus valores + 20\n• Figuras (10, 11, 12) valem 0 para a soma\n• Se tiver naipes diferentes, vale a carta mais alta isolada\n\nO máximo é 33 (7+6 do mesmo naipe + 20).'
   },
   {
     id: 'gameplay-flow',

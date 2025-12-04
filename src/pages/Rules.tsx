@@ -22,14 +22,14 @@ export default function Rules() {
         <header className="mb-6">
           <Link
             to="/"
-            className="inline-block mb-4 text-primary-600 hover:text-primary-700 font-medium"
+            className="inline-block mb-4 text-primary-600 hover:text-primary-700 font-medium transition-colors"
           >
             ← Voltar para o início
           </Link>
-          <h1 className="text-4xl font-bold text-primary-700 mb-2">
-            Regras do Truco Gaudério
+          <h1 className="text-4xl font-bold text-primary-800 mb-2 drop-shadow-sm">
+            📖 Regras do Truco Gaudério
           </h1>
-          <p className="text-gray-600">
+          <p className="text-accent-700 text-lg">
             Referência completa das regras e mecânicas do jogo
           </p>
         </header>
@@ -41,9 +41,9 @@ export default function Rules() {
               placeholder="Buscar nas regras..."
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
-              className="w-full px-4 py-3 pl-10 rounded-lg border-2 border-gray-300 focus:border-primary-500 focus:outline-none"
+              className="w-full px-4 py-3 pl-12 rounded-lg border-2 border-accent-300 focus:border-primary-500 focus:outline-none bg-white shadow-sm focus:shadow-md transition-all"
             />
-            <span className="absolute left-3 top-3 text-gray-400">🔍</span>
+            <span className="absolute left-3 top-3 text-accent-500 text-lg">🔍</span>
           </div>
         </div>
 
@@ -53,8 +53,8 @@ export default function Rules() {
               <RuleSectionComponent key={rule.id} section={rule} />
             ))
           ) : (
-            <div className="bg-white rounded-lg shadow-md p-8 text-center">
-              <p className="text-gray-600 text-lg">
+            <div className="bg-gradient-to-br from-white to-accent-50 rounded-lg shadow-lg border border-accent-200 p-8 text-center">
+              <p className="text-accent-700 text-lg">
                 Nenhuma regra encontrada para "{searchQuery}"
               </p>
             </div>
