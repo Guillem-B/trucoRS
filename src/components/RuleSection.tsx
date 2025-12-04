@@ -1,5 +1,6 @@
 import { RuleSection } from '../data/rules';
 import Card from './Card';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface RuleSectionProps {
   section: RuleSection;
@@ -7,6 +8,7 @@ interface RuleSectionProps {
 }
 
 export default function RuleSectionComponent({ section, level = 0 }: RuleSectionProps) {
+  const { t } = useLanguage();
   const paddingClass = level === 0 ? 'p-6' : level === 1 ? 'p-5 ml-6' : 'p-4 ml-12';
   const titleSize = level === 0 ? 'text-2xl' : level === 1 ? 'text-xl' : 'text-lg';
   const bgClass = level === 0
@@ -29,14 +31,30 @@ export default function RuleSectionComponent({ section, level = 0 }: RuleSection
     return '📋';
   };
 
+  // Get translated content
+  const getTranslatedContent = () => {
+    const titleKey = `rules.${section.id}.title`;
+    const contentKey = `rules.${section.id}.content`;
+
+    const translatedTitle = t(titleKey);
+    const translatedContent = t(contentKey);
+
+    return {
+      title: translatedTitle !== titleKey ? translatedTitle : section.title,
+      content: translatedContent !== contentKey ? translatedContent : section.content
+    };
+  };
+
+  const { title, content } = getTranslatedContent();
+
   return (
     <div className={`${paddingClass} ${bgClass} rounded-lg shadow-lg mb-4 transition-all hover:shadow-xl`}>
       <h3 className={`${titleSize} font-bold text-primary-800 mb-4 flex items-center gap-2`}>
-        {getIcon(section.title) && <span className="text-2xl">{getIcon(section.title)}</span>}
-        {section.title}
+        {getIcon(title) && <span className="text-2xl">{getIcon(title)}</span>}
+        {title}
       </h3>
       <div className="text-accent-800 leading-relaxed text-base space-y-3">
-        {section.content.split('\n').map((paragraph, idx) => {
+        {content.split('\n').map((paragraph, idx) => {
           if (!paragraph.trim()) return <br key={idx} />;
 
           // Check if this is a numbered list item
@@ -96,13 +114,27 @@ export default function RuleSectionComponent({ section, level = 0 }: RuleSection
 
       {section.subsections && section.subsections.length > 0 && (
         <div className="mt-6 space-y-3">
-          {section.subsections.map((subsection) => (
-            <RuleSectionComponent
-              key={subsection.id}
-              section={subsection}
-              level={level + 1}
-            />
-          ))}
+          {section.subsections.map((subsection) => {
+            const subTitleKey = `rules.${subsection.id}.title`;
+            const subContentKey = `rules.${subsection.id}.content`;
+
+            const translatedSubTitle = t(subTitleKey);
+            const translatedSubContent = t(subContentKey);
+
+            const translatedSubsection = {
+              ...subsection,
+              title: translatedSubTitle !== subTitleKey ? translatedSubTitle : subsection.title,
+              content: translatedSubContent !== subContentKey ? translatedSubContent : subsection.content
+            };
+
+            return (
+              <RuleSectionComponent
+                key={subsection.id}
+                section={translatedSubsection}
+                level={level + 1}
+              />
+            );
+          })}
         </div>
       )}
     </div>
