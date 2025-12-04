@@ -12,7 +12,7 @@ export const rulesData: RuleSection[] = [
   {
     id: 'hierarchy',
     title: 'Hierarquia das Cartas',
-    content: 'No Truco Gaudério, as manilhas são fixas (não existe "vira"). A ordem de força das cartas é: 1. Espada (1 de Espadas), 2. Pauzão (1 de Paus), 3. Espadão (7 de Espadas), 4. Sete Belo (7 de Ouros). Depois seguem: todos os 3s, todos os 2s, 1 de Copas = 1 de Ouros, todos os Reis, todas as Damas (Q), todos os Valetes (J), 7 de Copas = 7 de Paus, todos os 6s, todos os 5s, todos os 4s.'
+    content: 'No Truco Gaudério, as manilhas são fixas (não existe "vira"). A ordem de força das cartas é: 1. Espadão (1 de Espadas), 2. Bastião (1 de Paus), 3. 7 de Espadas, 4. 7 de Ouros. Depois seguem: todos os 3s, todos os 2s, 1 de Copas = 1 de Ouros, todos os Reis, todas as Damas (Q), todos os Valetes (J), 7 de Copas = 7 de Paus, todos os 6s, todos os 5s, todos os 4s.'
   },
   {
     id: 'envido',
