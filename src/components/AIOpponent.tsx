@@ -1,12 +1,10 @@
-import { Player } from '../store/gameStore';
 
 interface AIOpponentProps {
-  player: Player;
   name: string;
   cardsRemaining: number;
 }
 
-export default function AIOpponent({ player, name, cardsRemaining }: AIOpponentProps) {
+export default function AIOpponent({ name, cardsRemaining }: AIOpponentProps) {
   return (
     <div className="bg-white rounded-lg shadow-md p-4">
       <div className="flex items-center justify-between">

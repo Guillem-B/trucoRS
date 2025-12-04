@@ -1,5 +1,5 @@
 import { Card } from '../data/cards';
-import { getCardValue, compareCards } from './cardComparison';
+import { getCardValue } from './cardComparison';
 
 export interface MoveSuggestion {
   card: Card;

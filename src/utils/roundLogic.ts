@@ -1,5 +1,3 @@
-import { Card } from '../data/cards';
-import { getRoundWinner } from './cardComparison';
 
 export type RoundResult = {
   winner: string | null;

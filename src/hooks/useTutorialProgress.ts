@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getTutorialProgress, saveTutorialProgress, getModuleProgress } from '../data/tutorials';
+import { saveTutorialProgress, getModuleProgress } from '../data/tutorials';
 
 export function useTutorialProgress(moduleId: string) {
   const [currentStep, setCurrentStep] = useState(0);

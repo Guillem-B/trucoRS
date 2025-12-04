@@ -53,10 +53,7 @@ export function canBet(
 /**
  * Validates if a bet response is valid
  */
-export function canRespondToBet(
-  currentBet: BetLevel,
-  response: 'accept' | 'decline'
-): boolean {
+export function canRespondToBet(currentBet: BetLevel): boolean {
   if (currentBet === 'none') return false; // No bet to respond to
   return true;
 }

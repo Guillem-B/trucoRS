@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { strategiesData, StrategySection } from '../data/strategies';
+import { strategiesData } from '../data/strategies';
 import RuleSectionComponent from '../components/RuleSection';
 import StrategyExample from '../components/StrategyExample';
 import StrategyQuiz from '../components/StrategyQuiz';

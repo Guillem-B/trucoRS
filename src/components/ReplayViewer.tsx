@@ -12,7 +12,6 @@ export default function ReplayViewer({ record, onClose }: ReplayViewerProps) {
   const [currentMoveIndex, setCurrentMoveIndex] = useState(0);
   const displayedMoves = record.moves.slice(0, currentMoveIndex + 1);
 
-  const currentMove = record.moves[currentMoveIndex];
   const canGoNext = currentMoveIndex < record.moves.length - 1;
   const canGoPrevious = currentMoveIndex > 0;
 
