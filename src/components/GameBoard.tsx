@@ -61,20 +61,20 @@ export default function GameBoard() {
   }
 
   return (
-    <div className="min-h-screen p-4 bg-gradient-to-b from-green-50 to-white">
+    <div className="min-h-screen p-4 bg-gradient-to-br from-accent-50 via-secondary-50 to-primary-50">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="bg-white rounded-lg shadow-md p-4 mb-4">
+        <div className="bg-gradient-to-r from-accent-100 to-secondary-100 rounded-lg shadow-lg border-2 border-accent-200 p-4 mb-4">
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-2xl font-bold text-primary-700">Truco Gaudério</h1>
-              <p className="text-gray-600">
+              <h1 className="text-2xl font-bold text-primary-800">Truco Gaudério</h1>
+              <p className="text-accent-700">
                 Mão {currentHand} - Rodada {currentRound}
               </p>
             </div>
             <div className="text-right">
-              <div className="text-sm text-gray-600">Placar</div>
-              <div className="text-xl font-bold">
+              <div className="text-sm text-accent-700 font-medium">Placar</div>
+              <div className="text-2xl font-bold text-primary-700 bg-white bg-opacity-50 px-3 py-1 rounded">
                 {scores.team1} - {scores.team2}
               </div>
             </div>
@@ -83,11 +83,11 @@ export default function GameBoard() {
 
 
         {/* Opponent Area */}
-        <div className="bg-white rounded-lg shadow-md p-4 mb-4">
+        <div className="bg-gradient-to-r from-white to-accent-50 rounded-lg shadow-lg border border-accent-200 p-4 mb-4">
           <div className="flex justify-between items-center mb-2">
-            <h2 className="text-lg font-semibold text-gray-700">Oponente</h2>
+            <h2 className="text-lg font-semibold text-primary-800">Oponente</h2>
             {florResults.opponent1.hasFlor && (
-              <div className="text-sm text-yellow-600 font-medium">
+              <div className="text-sm text-secondary-700 font-medium bg-secondary-100 px-2 py-1 rounded">
                 🌸 Tem Flor
               </div>
             )}
@@ -143,11 +143,11 @@ export default function GameBoard() {
         <FlorControls />
 
         {/* Player Hand */}
-        <div className="bg-white rounded-lg shadow-md p-4 mb-4">
+        <div className="bg-gradient-to-r from-white to-primary-50 rounded-lg shadow-lg border border-primary-200 p-4 mb-4">
           <div className="flex justify-between items-center mb-2">
-            <h2 className="text-lg font-semibold text-gray-700">Sua Mão</h2>
+            <h2 className="text-lg font-semibold text-primary-800">Sua Mão</h2>
             {florResults.player.hasFlor && (
-              <div className="text-sm text-yellow-600 font-medium">
+              <div className="text-sm text-secondary-700 font-medium bg-secondary-100 px-2 py-1 rounded">
                 🌸 Flor: {florResults.player.value} pontos
               </div>
             )}
