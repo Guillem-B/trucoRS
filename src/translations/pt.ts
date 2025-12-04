@@ -123,6 +123,9 @@ export const ptTranslations = {
   // AI opponent
   'ai.cards': 'Cartas',
 
+  // Home page
+  'home.deck.description': 'Cartas exibidas em ordem de valor (maior para menor)',
+
   // Language toggle
   'lang.portuguese': 'Português',
   'lang.english': 'English',

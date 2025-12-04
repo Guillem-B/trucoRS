@@ -65,29 +65,37 @@ export default function Home() {
         </nav>
 
         <section className="bg-gradient-to-br from-white to-secondary-50 rounded-lg shadow-lg border border-accent-200 p-6 mb-8">
-           <h2 className="text-2xl font-semibold text-primary-800 mb-4">
+           <h2 className="text-2xl font-semibold text-primary-800 mb-2">
              {t('home.deck.title')}
            </h2>
-           <div className="grid grid-cols-4 sm:grid-cols-8 md:grid-cols-10 gap-2">
-             {allCards
-               .sort((a, b) => {
-                 // Custom display order: group by suit first, then A to K within each suit
-                 const displayOrder = ['A', '2', '3', '4', '5', '6', '7', '10', 'J', 'Q', 'K'];
-                 const suitOrder = ['ouros', 'copas', 'espadas', 'paus'];
-
-                 const aSuitIndex = suitOrder.indexOf(a.suit);
-                 const bSuitIndex = suitOrder.indexOf(b.suit);
-
-                 if (aSuitIndex !== bSuitIndex) {
-                   return aSuitIndex - bSuitIndex;
+           <p className="text-sm text-accent-600 mb-4 italic">
+             {t('home.deck.description')}
+           </p>
+           <div className="flex flex-col items-center space-y-1">
+             {(() => {
+               // Group cards by value and sort groups by value (highest to lowest)
+               const groupedCards = allCards.reduce((groups, card) => {
+                 const value = card.value;
+                 if (!groups[value]) {
+                   groups[value] = [];
                  }
+                 groups[value].push(card);
+                 return groups;
+               }, {} as Record<number, typeof allCards>);
 
-                 // If same suit, sort by rank (A to K)
-                 return displayOrder.indexOf(a.rank) - displayOrder.indexOf(b.rank);
-               })
-               .map((card) => (
-                 <Card key={card.id} card={card} size="sm" enableZoom={true} />
-               ))}
+               // Sort groups by value (highest to lowest)
+               const sortedGroups = Object.entries(groupedCards)
+                 .sort(([a], [b]) => parseInt(b) - parseInt(a));
+
+               // Display each value group on its own row, centered
+               return sortedGroups.map(([value, cards]) => (
+                 <div key={value} className="flex justify-center gap-1">
+                   {cards.map((card) => (
+                     <Card key={card.id} card={card} size="sm" enableZoom={true} />
+                   ))}
+                 </div>
+               ));
+             })()}
            </div>
          </section>
       </div>
