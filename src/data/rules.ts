@@ -11,138 +11,133 @@ export interface RuleSection {
 export const rulesData: RuleSection[] = [
   {
     id: 'hierarchy',
-    title: 'Hierarquia das Cartas',
-    content: 'No Truco Gaudério, as manilhas são fixas (não existe "vira").\n\nA ordem de força das cartas é:\n1. Espadão (1 de Espadas)\n2. Bastião (1 de Paus)\n3. 7 de Espadas\n4. 7 de Ouros\n\nDepois seguem: todos os 3s, todos os 2s, 1 de Copas = 1 de Ouros, todos os Reis, todas as Damas (Q), todos os Valetes (J), 7 de Copas = 7 de Paus, todos os 6s, todos os 5s, todos os 4s.'
+    title: 'rules.hierarchy.title',
+    content: 'rules.hierarchy.content'
   },
   {
     id: 'envido',
-    title: 'Envido',
-    content: 'O Envido é uma aposta sobre quem tem a maior pontuação na mão inicial, antes de jogar as cartas.\n\nPontuação:\n• Cartas do mesmo naipe somam seus valores + 20\n• Figuras (10, 11, 12) valem 0 para a soma\n• Se tiver naipes diferentes, vale a carta mais alta isolada\n\nO máximo é 33 (7+6 do mesmo naipe + 20).'
+    title: 'rules.envido.title',
+    content: 'rules.envido.content'
   },
   {
     id: 'gameplay-flow',
-    title: 'Fluxo do Jogo',
-    content: 'O Truco Gaudério é jogado em rodadas. Cada rodada tem 3 mãos, e cada mão tem 3 rodadas de cartas.',
+    title: 'rules.flow.title',
+    content: 'rules.flow.content',
     subsections: [
       {
-        id: 'rounds',
-        title: 'Rodadas',
-        content: 'Cada rodada, os jogadores jogam uma carta. A carta mais alta vence a rodada. O jogador que vencer 2 rodadas vence a mão.',
-      },
-      {
         id: 'hands',
-        title: 'Mãos',
-        content: 'Uma mão consiste em 3 rodadas. O jogador que vencer 2 rodadas vence a mão e marca pontos.',
+        title: 'rules.flow.hands.title',
+        content: 'rules.flow.hands.content',
       },
       {
         id: 'game',
-        title: 'Partida',
-        content: 'Uma partida é disputada até que um time alcance 12 pontos (ou outro limite combinado).',
+        title: 'rules.flow.game.title',
+        content: 'rules.flow.game.content',
       },
     ],
   },
   {
     id: 'scoring',
-    title: 'Sistema de Pontuação',
-    content: 'Os pontos são marcados quando um time vence uma mão. O valor dos pontos pode ser aumentado através dos desafios (truco, retruco, vale quatro).',
+    title: 'rules.scoring.title',
+    content: 'rules.scoring.content',
     subsections: [
       {
         id: 'base-points',
-        title: 'Pontos Base',
-        content: 'Uma mão vencida vale 1 ponto por padrão. Se houver empate (1-1 nas rodadas), ninguém marca pontos.',
+        title: 'rules.scoring.base.title',
+        content: 'rules.scoring.base.content',
       },
       {
         id: 'challenges',
-        title: 'Desafios',
-        content: 'Os desafios aumentam o valor dos pontos: Truco (2 pontos), Retruco (3 pontos), Vale Quatro (4 pontos).',
+        title: 'rules.scoring.challenges.title',
+        content: 'rules.scoring.challenges.content',
       },
     ],
   },
   {
     id: 'betting',
-    title: 'Mecânica de Apostas (Desafios)',
-    content: 'Durante o jogo, os jogadores podem desafiar os oponentes, aumentando o valor da mão.',
+    title: 'rules.betting.title',
+    content: 'rules.betting.content',
     subsections: [
       {
         id: 'truco',
-        title: 'Truco',
-        content: 'O jogador que está jogando pode dizer "Truco", aumentando o valor da mão para 2 pontos. O oponente pode aceitar ou recusar. Se recusar, perde a mão e o desafiante marca os pontos.',
+        title: 'rules.betting.truco.title',
+        content: 'rules.betting.truco.content',
       },
       {
         id: 'retruco',
-        title: 'Retruco',
-        content: 'Se o Truco foi aceito, o oponente pode responder com "Retruco", aumentando para 3 pontos. O desafiante original pode aceitar ou recusar.',
+        title: 'rules.betting.retruco.title',
+        content: 'rules.betting.retruco.content',
       },
       {
         id: 'vale-quatro',
-        title: 'Vale Quatro',
-        content: 'Se o Retruco foi aceito, o desafiante original pode responder com "Vale Quatro", aumentando para 4 pontos. O oponente pode aceitar ou recusar.',
+        title: 'rules.betting.vale.quatro.title',
+        content: 'rules.betting.vale.quatro.content',
       },
       {
         id: 'betting-rules',
-        title: 'Regras dos Desafios',
-        content: 'Os desafios só podem ser feitos na vez do jogador. Não é possível desafiar após jogar a carta. O desafio deve ser respondido antes de jogar a próxima carta.',
+        title: 'rules.betting.rules.title',
+        content: 'rules.betting.rules.content',
       },
     ],
   },
   {
     id: 'winning-conditions',
-    title: 'Condições de Vitória',
-    content: 'A partida é vencida quando um time alcança 12 pontos (ou o limite combinado).',
+    title: 'rules.winning.title',
+    content: 'rules.winning.content',
     subsections: [
       {
         id: 'hand-winner',
-        title: 'Vencedor da Mão',
-        content: 'Vence a mão o time que ganhar 2 das 3 rodadas. Em caso de empate (1-1), ninguém marca pontos.',
+        title: 'rules.winning.hand.title',
+        content: 'rules.winning.hand.content',
       },
       {
         id: 'game-winner',
-        title: 'Vencedor da Partida',
-        content: 'Vence a partida o time que primeiro alcançar 12 pontos. Em algumas variações, pode ser necessário vencer por 2 pontos de diferença.',
+        title: 'rules.winning.game.title',
+        content: 'rules.winning.game.content',
       },
     ],
   },
   {
     id: 'flor',
-    title: 'Flor',
-    content: 'Flor é uma declaração especial que pode ser feita quando um jogador tem três cartas do mesmo naipe. É uma adição opcional ao Truco Gaudério, inspirada em outras variações do jogo.',
+    title: 'rules.flor.title',
+    content: 'rules.flor.content',
     subsections: [
       {
         id: 'flor-definition',
-        title: 'O que é Flor?',
-        content: 'Flor ocorre quando um jogador recebe três cartas do mesmo naipe na distribuição inicial. O jogador pode declarar "Flor" antes de jogar qualquer carta.',
+        title: 'rules.flor.definition.title',
+        content: 'rules.flor.definition.content',
       },
       {
         id: 'flor-value',
-        title: 'Valor da Flor',
-        content: 'O valor da Flor é calculado somando os valores das cartas do mesmo naipe + 20 pontos base. Cartas de face (10, J, Q, K) valem 0, Ás vale 1, e números valem seu valor facial.',
+        title: 'rules.flor.value.title',
+        content: 'rules.flor.value.content',
       },
       {
         id: 'flor-challenge',
-        title: 'Desafiando a Flor',
-        content: 'Quando um jogador declara Flor, o oponente pode aceitar (comparar Flors) ou recusar (conceder os pontos da Flor ao desafiante). Se ambos tiverem Flor, vence quem tiver o maior valor.',
+        title: 'rules.flor.challenge.title',
+        content: 'rules.flor.challenge.content',
       },
       {
         id: 'flor-points',
-        title: 'Pontos da Flor',
-        content: 'Flor vale 3 pontos. Se o desafio for aceito e você vencer, marca 3 pontos. Se for recusado, o oponente marca 3 pontos.',
+        title: 'rules.flor.points.title',
+        content: 'rules.flor.points.content',
       },
     ],
   },
   {
     id: 'special-situations',
-    title: 'Situações Especiais',
-    content: 'Existem algumas situações especiais no Truco Gaudério que merecem atenção.',
+    title: 'rules.special.title',
+    content: 'rules.special.content',
     subsections: [
       {
         id: 'manilhas',
-        title: 'Manilhas',
-        content: 'As manilhas são sempre as cartas mais altas, independentemente do naipe. Entre manilhas, a ordem é: Ouros < Espadas < Copas < Paus.',
+        title: 'rules.special.manilhas.title',
+        content: 'rules.special.manilhas.content',
       },
       {
         id: 'ties',
-        title: 'Empates',
-        content: 'Se duas cartas iguais forem jogadas na mesma rodada, a primeira carta jogada vence (ou pode ser considerado empate, dependendo da variação).',
+        title: 'rules.special.ties.title',
+        content: 'rules.special.ties.content',
       },
     ],
   },

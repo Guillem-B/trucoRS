@@ -33,15 +33,17 @@ export default function RuleSectionComponent({ section, level = 0 }: RuleSection
 
   // Get translated content
   const getTranslatedContent = () => {
-    const titleKey = `rules.${section.id}.title`;
-    const contentKey = `rules.${section.id}.content`;
+    // Try to translate the title directly (it's now a translation key)
+    const translatedTitle = t(section.title);
 
-    const translatedTitle = t(titleKey);
+    // For content, try the constructed key first, then fall back to direct translation if it's a key
+    const contentKey = `rules.${section.id}.content`;
     const translatedContent = t(contentKey);
+    const finalContent = translatedContent !== contentKey ? translatedContent : t(section.content);
 
     return {
-      title: translatedTitle !== titleKey ? translatedTitle : section.title,
-      content: translatedContent !== contentKey ? translatedContent : section.content
+      title: translatedTitle !== section.title ? translatedTitle : section.title,
+      content: finalContent !== section.content ? finalContent : section.content
     };
   };
 
@@ -96,7 +98,7 @@ export default function RuleSectionComponent({ section, level = 0 }: RuleSection
         <div className="mb-6 mt-4">
           <h4 className="text-lg font-semibold text-secondary-700 mb-3 flex items-center gap-2">
             <span className="text-xl">🎴</span>
-            Exemplos:
+            {t('rules.examples')}:
           </h4>
           <div className="bg-secondary-50 rounded-lg p-4 border border-secondary-200">
             <div className="flex flex-wrap gap-3">
@@ -115,16 +117,18 @@ export default function RuleSectionComponent({ section, level = 0 }: RuleSection
       {section.subsections && section.subsections.length > 0 && (
         <div className="mt-6 space-y-3">
           {section.subsections.map((subsection) => {
-            const subTitleKey = `rules.${subsection.id}.title`;
-            const subContentKey = `rules.${subsection.id}.content`;
+            // Try to translate the subsection title directly (it's now a translation key)
+            const translatedSubTitle = t(subsection.title);
 
-            const translatedSubTitle = t(subTitleKey);
+            // For content, try the constructed key first, then fall back to direct translation
+            const subContentKey = `rules.${subsection.id}.content`;
             const translatedSubContent = t(subContentKey);
+            const finalSubContent = translatedSubContent !== subContentKey ? translatedSubContent : t(subsection.content);
 
             const translatedSubsection = {
               ...subsection,
-              title: translatedSubTitle !== subTitleKey ? translatedSubTitle : subsection.title,
-              content: translatedSubContent !== subContentKey ? translatedSubContent : subsection.content
+              title: translatedSubTitle !== subsection.title ? translatedSubTitle : subsection.title,
+              content: finalSubContent !== subsection.content ? finalSubContent : subsection.content
             };
 
             return (

@@ -27,6 +27,10 @@ export const ptTranslations = {
   'game.opponent': 'Oponente',
   'game.player.hand': 'Sua Mão',
   'game.player.turn': 'É a vez de',
+  'game.player.name': 'Você',
+  'game.opponent1.name': 'Oponente 1',
+  'game.opponent2.name': 'Oponente 2',
+  'game.opponent3.name': 'Oponente 3',
   'game.has.flor': 'Tem Flor',
   'game.flor.value': 'Flor: {value} pontos',
   'game.card.played': 'Carta jogada',
@@ -34,12 +38,15 @@ export const ptTranslations = {
   'game.game.end': 'Fim de Jogo!',
   'game.hand.won': 'Você venceu a mão!',
   'game.hand.lost': 'O oponente venceu a mão!',
-  'game.game.won': 'Você venceu a partida!',
+  'game.game.won': '🎉 Você venceu a partida! 🎉',
   'game.game.lost': 'O oponente venceu a partida.',
   'game.next.round': 'Próxima Rodada',
   'game.next.hand': 'Próxima Mão',
   'game.reset': 'Reiniciar Jogo',
   'game.start': 'Iniciar Jogo',
+  'game.played.cards': 'Cartas Jogadas',
+  'game.waiting.cards': 'Aguardando cartas serem jogadas...',
+  'game.round.winner': 'Vencedor da rodada',
 
   // Betting
   'bet.truco': 'Truco',
@@ -56,11 +63,9 @@ export const ptTranslations = {
   'rules.envido.content': 'O Envido é uma aposta sobre quem tem a maior pontuação na mão inicial, antes de jogar as cartas.\n\nPontuação:\n• Cartas do mesmo naipe somam seus valores + 20\n• Figuras (10, 11, 12) valem 0 para a soma\n• Se tiver naipes diferentes, vale a carta mais alta isolada\n\nO máximo é 33 (7+6 do mesmo naipe + 20).',
 
   'rules.flow.title': 'Fluxo do Jogo',
-  'rules.flow.content': 'O Truco Gaudério é jogado em rodadas. Cada rodada tem 3 mãos, e cada mão tem 3 rodadas de cartas.',
-  'rules.flow.rounds.title': 'Rodadas',
-  'rules.flow.rounds.content': 'Cada rodada, os jogadores jogam uma carta. A carta mais alta vence a rodada. O jogador que vencer 2 rodadas vence a mão.',
+  'rules.flow.content': 'O Truco Gaudério é jogado em mãos. Cada mão tem 3 rodadas, e cada jogador recebe 3 cartas no início da mão.',
   'rules.flow.hands.title': 'Mãos',
-  'rules.flow.hands.content': 'Uma mão consiste em 3 rodadas. O jogador que vencer 2 rodadas vence a mão e marca pontos.',
+  'rules.flow.hands.content': 'Uma mão começa com cada jogador recebendo 3 cartas. Consiste em até 3 rodadas. O jogador que vencer 2 rodadas vence a mão e marca pontos.',
   'rules.flow.game.title': 'Partida',
   'rules.flow.game.content': 'Uma partida é disputada até que um time alcance 12 pontos (ou outro limite combinado).',
 
@@ -106,6 +111,17 @@ export const ptTranslations = {
   'rules.special.manilhas.content': 'As manilhas são sempre as cartas mais altas, independentemente do naipe. Entre manilhas, a ordem é: Ouros < Espadas < Copas < Paus.',
   'rules.special.ties.title': 'Empates',
   'rules.special.ties.content': 'Se duas cartas iguais forem jogadas na mesma rodada, a primeira carta jogada vence (ou pode ser considerado empate, dependendo da variação).',
+
+  // Examples
+  'rules.examples': 'Exemplos',
+
+  // Strategy components
+  'strategy.cards.in.hand': 'Cartas na mão:',
+  'strategy.scenario': 'Cenário:',
+  'strategy.solution': 'Solução:',
+
+  // AI opponent
+  'ai.cards': 'Cartas',
 
   // Language toggle
   'lang.portuguese': 'Português',

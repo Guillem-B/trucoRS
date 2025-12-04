@@ -27,6 +27,10 @@ export const enTranslations = {
   'game.opponent': 'Opponent',
   'game.player.hand': 'Your Hand',
   'game.player.turn': 'It\'s turn of',
+  'game.player.name': 'You',
+  'game.opponent1.name': 'Opponent 1',
+  'game.opponent2.name': 'Opponent 2',
+  'game.opponent3.name': 'Opponent 3',
   'game.has.flor': 'Has Flor',
   'game.flor.value': 'Flor: {value} points',
   'game.card.played': 'Card played',
@@ -34,12 +38,15 @@ export const enTranslations = {
   'game.game.end': 'Game Over!',
   'game.hand.won': 'You won the hand!',
   'game.hand.lost': 'Opponent won the hand!',
-  'game.game.won': 'You won the match!',
+  'game.game.won': '🎉 You won the match! 🎉',
   'game.game.lost': 'Opponent won the match.',
   'game.next.round': 'Next Round',
   'game.next.hand': 'Next Hand',
   'game.reset': 'Reset Game',
   'game.start': 'Start Game',
+  'game.played.cards': 'Played Cards',
+  'game.waiting.cards': 'Waiting for cards to be played...',
+  'game.round.winner': 'Round Winner',
 
   // Betting
   'bet.truco': 'Truco',
@@ -56,11 +63,9 @@ export const enTranslations = {
   'rules.envido.content': 'Envido is a bet about who has the highest score in the initial hand, before playing cards.\n\nScoring:\n• Cards of the same suit add their values + 20\n• Face cards (10, 11, 12) are worth 0 for the sum\n• If you have different suits, the highest card alone counts\n\nThe maximum is 33 (7+6 of the same suit + 20).',
 
   'rules.flow.title': 'Game Flow',
-  'rules.flow.content': 'Truco Gaudério is played in rounds. Each round has 3 hands, and each hand has 3 rounds of cards.',
-  'rules.flow.rounds.title': 'Rounds',
-  'rules.flow.rounds.content': 'Each round, players play one card. The highest card wins the round. The player who wins 2 rounds wins the hand.',
+  'rules.flow.content': 'Truco Gaudério is played in hands. Each hand has 3 rounds, and each player receives 3 cards at the start of the hand.',
   'rules.flow.hands.title': 'Hands',
-  'rules.flow.hands.content': 'A hand consists of 3 rounds. The player who wins 2 rounds wins the hand and scores points.',
+  'rules.flow.hands.content': 'A hand begins with each player receiving 3 cards. It consists of up to 3 rounds. The player who wins 2 rounds wins the hand and scores points.',
   'rules.flow.game.title': 'Match',
   'rules.flow.game.content': 'A match is played until one team reaches 12 points (or another agreed limit).',
 
@@ -106,6 +111,17 @@ export const enTranslations = {
   'rules.special.manilhas.content': 'The manilhas are always the highest cards, regardless of suit. Among manilhas, the order is: Gold < Swords < Cups < Clubs.',
   'rules.special.ties.title': 'Ties',
   'rules.special.ties.content': 'If two equal cards are played in the same round, the first card played wins (or it may be considered a tie, depending on the variation).',
+
+  // Examples
+  'rules.examples': 'Examples',
+
+  // Strategy components
+  'strategy.cards.in.hand': 'Cards in hand:',
+  'strategy.scenario': 'Scenario:',
+  'strategy.solution': 'Solution:',
+
+  // AI opponent
+  'ai.cards': 'Cards',
 
   // Language toggle
   'lang.portuguese': 'Português',

@@ -1,5 +1,6 @@
 import { Card } from '../data/cards';
 import CardComponent from './Card';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface PlayAreaProps {
   playedCards: Record<string, Card | null>;
@@ -8,12 +9,13 @@ interface PlayAreaProps {
 }
 
 export default function PlayArea({ playedCards, roundWinner, playerNames }: PlayAreaProps) {
+  const { t } = useLanguage();
   const entries = Object.entries(playedCards).filter(([_, card]) => card !== null);
   
   if (entries.length === 0) {
     return (
       <div className="bg-gray-50 rounded-lg p-8 min-h-[200px] flex items-center justify-center border-2 border-dashed border-gray-300">
-        <p className="text-gray-500">Aguardando cartas serem jogadas...</p>
+        <p className="text-gray-500">{t('game.waiting.cards')}</p>
       </div>
     );
   }
@@ -21,7 +23,7 @@ export default function PlayArea({ playedCards, roundWinner, playerNames }: Play
   return (
     <div className="bg-white rounded-lg shadow-md p-6 min-h-[200px]">
       <h3 className="text-lg font-semibold text-gray-700 mb-4 text-center">
-        Cartas Jogadas
+        {t('game.played.cards')}
       </h3>
       <div className="flex flex-wrap gap-4 justify-center items-center">
         {entries.map(([player, card]) => {
@@ -51,7 +53,7 @@ export default function PlayArea({ playedCards, roundWinner, playerNames }: Play
       {roundWinner && (
         <div className="mt-4 text-center">
           <p className="text-lg font-semibold text-green-700">
-            Vencedor da rodada: {playerNames?.[roundWinner] || roundWinner}
+            {t('game.round.winner')}: {playerNames?.[roundWinner] || roundWinner}
           </p>
         </div>
       )}
