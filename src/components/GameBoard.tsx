@@ -6,6 +6,8 @@ import BettingControls from './BettingControls';
 import FlorControls from './FlorControls';
 import { Card } from '../data/cards';
 import { useLanguage } from '../contexts/LanguageContext';
+import { AppBar, Toolbar, Typography, Container, Paper, Box, Button, Chip, Alert } from '@mui/material';
+import { PlayArrow, Refresh, SkipNext, EmojiEvents, Casino } from '@mui/icons-material';
 
 export default function GameBoard() {
   const { t } = useLanguage();
@@ -50,67 +52,91 @@ export default function GameBoard() {
 
   if (gameStatus === 'waiting') {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen p-4">
-        <h1 className="text-3xl font-bold text-primary-700 mb-6">{t('game.title')}</h1>
-        <button
-          onClick={() => startGame(2)}
-          className="px-8 py-3 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 transition-colors"
-        >
-          {t('game.start')}
-        </button>
-      </div>
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', p: 3, backgroundColor: '#F0FDF4' }}>
+        <Box sx={{ p: 6, textAlign: 'center', maxWidth: 400 }}>
+          <Casino sx={{ fontSize: 60, color: 'primary.main', mb: 3 }} />
+          <Typography variant="h3" color="text.primary" gutterBottom sx={{ fontWeight: 700, mb: 2 }}>
+            {t('game.title')}
+          </Typography>
+          <Typography variant="body1" color="text.secondary" sx={{ mb: 4, fontSize: '1.1rem' }}>
+            Ready to play Truco?
+          </Typography>
+          <Button
+            variant="contained"
+            size="large"
+            startIcon={<PlayArrow />}
+            onClick={() => startGame(2)}
+            sx={{ borderRadius: 2, px: 6, py: 2, fontSize: '1.2rem', fontWeight: 600 }}
+          >
+            {t('game.start')}
+          </Button>
+        </Box>
+      </Box>
     );
   }
 
   return (
-    <div className="min-h-screen p-4 bg-gradient-to-br from-accent-50 via-secondary-50 to-primary-50">
-      <div className="max-w-6xl mx-auto">
+    <Box sx={{ minHeight: '100vh', p: 3, backgroundColor: 'background.default' }}>
+      <Container maxWidth="lg" sx={{ maxWidth: 1200 }}>
         {/* Header */}
-        <div className="bg-gradient-to-r from-accent-100 to-secondary-100 rounded-lg shadow-lg border-2 border-accent-200 p-4 mb-4">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-2xl font-bold text-primary-800">{t('game.title')}</h1>
-              <p className="text-accent-700">
+        <AppBar position="static" sx={{ mb: 3, borderRadius: 2 }} elevation={0}>
+          <Toolbar>
+            <Casino sx={{ mr: 2 }} />
+            <Box sx={{ flexGrow: 1 }}>
+              <Typography variant="h5" component="div" sx={{ fontWeight: 'bold' }}>
+                {t('game.title')}
+              </Typography>
+              <Typography variant="body2" color="inherit">
                 {t('game.hand')} {currentHand} - {t('game.round')} {currentRound}
-              </p>
-            </div>
-            <div className="text-right">
-              <div className="text-sm text-accent-700 font-medium">{t('game.score')}</div>
-              <div className="text-2xl font-bold text-primary-700 bg-white bg-opacity-50 px-3 py-1 rounded">
+              </Typography>
+            </Box>
+            <Box sx={{ textAlign: 'right' }}>
+              <Typography variant="body2">
+                {t('game.score')}
+              </Typography>
+              <Typography variant="h4" sx={{ bgcolor: 'rgba(255,255,255,0.2)', px: 1.5, py: 0.5, borderRadius: 2, backdropFilter: 'blur(10px)' }}>
                 {scores.team1} - {scores.team2}
-              </div>
-            </div>
-          </div>
-        </div>
+              </Typography>
+            </Box>
+          </Toolbar>
+        </AppBar>
 
 
         {/* Opponent Area */}
-        <div className="bg-gradient-to-r from-white to-accent-50 rounded-lg shadow-lg border border-accent-200 p-4 mb-4">
-          <div className="flex justify-between items-center mb-2">
-            <h2 className="text-lg font-semibold text-primary-800">{t('game.opponent')}</h2>
+        <Box sx={{ mb: 4, p: 3, backgroundColor: '#F0FDF4', borderRadius: 2 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+            <Typography variant="h6" sx={{ fontWeight: 600 }}>
+              {t('game.opponent')}
+            </Typography>
             {florResults.opponent1.hasFlor && (
-              <div className="text-sm text-secondary-700 font-medium bg-secondary-100 px-2 py-1 rounded">
-                🌸 {t('game.has.flor')}
-              </div>
+              <Chip
+                icon={<EmojiEvents />}
+                label={t('game.has.flor')}
+                size="small"
+                color="secondary"
+                variant="outlined"
+              />
             )}
-          </div>
+          </Box>
           <PlayerHand
             cards={hands.opponent1}
             disabled
             title={getPlayerName('opponent1')}
           />
           {playedCards.opponent1 && (
-            <div className="mt-4 text-center">
-              <p className="text-sm text-gray-600 mb-2">{t('game.card.played')}:</p>
-              <div className="flex justify-center">
+            <Box sx={{ mt: 3, textAlign: 'center' }}>
+              <Typography variant="body2" color="text.secondary" gutterBottom>
+                {t('game.card.played')}:
+              </Typography>
+              <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <CardComponent card={playedCards.opponent1} size="md" />
-              </div>
-            </div>
+              </Box>
+            </Box>
           )}
-        </div>
+        </Box>
 
         {/* Play Area */}
-        <div className="mb-4">
+        <Box sx={{ mb: 2 }}>
           <PlayArea
             playedCards={playedCards}
             roundWinner={roundWinner}
@@ -120,15 +146,17 @@ export default function GameBoard() {
             }}
           />
           {gameStatus === 'playing' && (
-            <div className="mt-2 text-center text-gray-600">
-              {t('game.player.turn')}: <strong>{getPlayerName(currentPlayer)}</strong>
-            </div>
+            <Box sx={{ mt: 1, textAlign: 'center' }}>
+              <Typography variant="body2" color="text.secondary">
+                {t('game.player.turn')}: <strong>{getPlayerName(currentPlayer)}</strong>
+              </Typography>
+            </Box>
           )}
-        </div>
+        </Box>
 
         {/* Betting Controls */}
         {gameStatus === 'playing' && (
-          <div className="mb-4">
+          <Box sx={{ mb: 2 }}>
             <BettingControls
               currentBet={currentBet}
               isPlayerTurn={currentPlayer === 'player'}
@@ -138,76 +166,92 @@ export default function GameBoard() {
               onDecline={declineBet}
               canRespond={!betAccepted && betChallenger !== 'player'}
             />
-          </div>
+          </Box>
         )}
 
         {/* Flor Controls */}
         <FlorControls />
 
         {/* Player Hand */}
-        <div className="bg-gradient-to-r from-white to-primary-50 rounded-lg shadow-lg border border-primary-200 p-4 mb-4">
-          <div className="flex justify-between items-center mb-2">
-            <h2 className="text-lg font-semibold text-primary-800">{t('game.player.hand')}</h2>
+        <Box sx={{ mb: 4, p: 3, backgroundColor: '#F0FDF4', borderRadius: 2 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+            <Typography variant="h6" sx={{ fontWeight: 600 }}>
+              {t('game.player.hand')}
+            </Typography>
             {florResults.player.hasFlor && (
-              <div className="text-sm text-secondary-700 font-medium bg-secondary-100 px-2 py-1 rounded">
-                🌸 {t('game.flor.value').replace('{value}', florResults.player.value.toString())}
-              </div>
+              <Chip
+                icon={<EmojiEvents />}
+                label={t('game.flor.value').replace('{value}', florResults.player.value.toString())}
+                size="small"
+                color="secondary"
+                variant="outlined"
+              />
             )}
-          </div>
+          </Box>
           <PlayerHand
             cards={hands.player}
             onCardClick={handleCardClick}
             disabled={gameStatus !== 'playing' || currentPlayer !== 'player'}
             title={getPlayerName('player')}
           />
-        </div>
+        </Box>
 
         {/* Hand/Game End Messages */}
         {gameStatus === 'handEnd' && (
-          <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4 rounded">
-            <h3 className="text-lg font-semibold text-blue-800 mb-2">{t('game.hand.end')}</h3>
-            <p className="text-blue-700">
+          <Alert severity="info" sx={{ mb: 2 }}>
+            <Typography variant="h6" gutterBottom>
+              {t('game.hand.end')}
+            </Typography>
+            <Typography>
               {scores.team1 > scores.team2 ? t('game.hand.won') : t('game.hand.lost')}
-            </p>
-          </div>
+            </Typography>
+          </Alert>
         )}
 
         {gameStatus === 'gameEnd' && (
-          <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-4 rounded">
-            <h3 className="text-2xl font-bold text-green-800 mb-2">{t('game.game.end')}</h3>
-            <p className="text-green-700 text-lg">
+          <Alert severity="success" sx={{ mb: 2 }}>
+            <Typography variant="h5" gutterBottom>
+              {t('game.game.end')}
+            </Typography>
+            <Typography variant="h6">
               {scores.team1 >= 12 ? t('game.game.won') : t('game.game.lost')}
-            </p>
-          </div>
+            </Typography>
+          </Alert>
         )}
 
         {/* Controls */}
-        <div className="flex gap-4 justify-center">
+        <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', mt: 2 }}>
           {gameStatus === 'roundEnd' && (
-            <button
+            <Button
+              variant="contained"
+              startIcon={<SkipNext />}
               onClick={nextRound}
-              className="px-6 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors"
+              sx={{ borderRadius: 3, px: 3 }}
             >
               {t('game.next.round')}
-            </button>
+            </Button>
           )}
           {gameStatus === 'handEnd' && (
-            <button
+            <Button
+              variant="contained"
+              startIcon={<PlayArrow />}
               onClick={nextHand}
-              className="px-6 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors"
+              sx={{ borderRadius: 3, px: 3 }}
             >
               {t('game.next.hand')}
-            </button>
+            </Button>
           )}
-          <button
+          <Button
+            variant="outlined"
+            startIcon={<Refresh />}
             onClick={resetGame}
-            className="px-6 py-2 bg-gray-200 text-gray-800 rounded-lg font-medium hover:bg-gray-300 transition-colors"
+            sx={{ borderRadius: 3, px: 3 }}
           >
             {t('game.reset')}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
+          </Button>
+        </Box>
+      </Container>
+      </Box>
+    );
+  }
 

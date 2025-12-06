@@ -1,5 +1,6 @@
 import { Card } from '../data/cards';
 import CardComponent from './Card';
+import { Box, Typography, Paper } from '@mui/material';
 
 interface PlayerHandProps {
   cards: Card[];
@@ -10,11 +11,13 @@ interface PlayerHandProps {
 
 export default function PlayerHand({ cards, onCardClick, disabled = false, title }: PlayerHandProps) {
   return (
-    <div className="flex flex-col items-center">
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       {title && (
-        <h3 className="text-lg font-semibold text-gray-700 mb-2">{title}</h3>
+        <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: 'text.primary' }}>
+          {title}
+        </Typography>
       )}
-      <div className="flex gap-2 flex-wrap justify-center">
+      <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', justifyContent: 'center' }}>
         {cards.map((card) => (
           <CardComponent
             key={card.id}
@@ -25,11 +28,13 @@ export default function PlayerHand({ cards, onCardClick, disabled = false, title
             showBack={disabled}
           />
         ))}
-      </div>
+      </Box>
       {cards.length === 0 && (
-        <p className="text-gray-500 text-sm mt-2">Sem cartas</p>
+        <Typography variant="body2" color="text.secondary" sx={{ mt: 2, textAlign: 'center' }}>
+          Sem cartas
+        </Typography>
       )}
-    </div>
+    </Box>
   );
 }
 

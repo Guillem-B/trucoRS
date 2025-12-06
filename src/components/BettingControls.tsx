@@ -1,4 +1,6 @@
 import { BetLevel, betNames, betValues, getNextBet, canBet } from '../utils/bettingLogic';
+import { Paper, Typography, Box, Button } from '@mui/material';
+import { TrendingUp, Check, Close } from '@mui/icons-material';
 
 interface BettingControlsProps {
   currentBet: BetLevel;
@@ -23,44 +25,54 @@ export default function BettingControls({
   const canMakeBet = canBet(currentBet, isPlayerTurn, hasPlayedCard);
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4">
-      <div className="flex flex-col items-center gap-3">
-        <div className="text-center">
-          <p className="text-sm text-gray-600 mb-1">Aposta Atual</p>
-          <p className="text-xl font-bold text-primary-700">
+    <Box sx={{ p: 3, backgroundColor: '#F0FDF4', borderRadius: 2 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
+        <Box sx={{ textAlign: 'center' }}>
+          <Typography variant="body2" color="text.secondary" gutterBottom sx={{ fontWeight: 500 }}>
+            Aposta Atual
+          </Typography>
+          <Typography variant="h5" color="primary" sx={{ fontWeight: 600 }}>
             {betNames[currentBet]} ({betValues[currentBet]} pontos)
-          </p>
-        </div>
+          </Typography>
+        </Box>
 
-        <div className="flex gap-2 flex-wrap justify-center">
+        <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', justifyContent: 'center' }}>
           {canMakeBet && nextBet && (
-            <button
+            <Button
+              variant="contained"
+              startIcon={<TrendingUp />}
               onClick={() => onBet(nextBet)}
-              className="px-4 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors"
+              sx={{ borderRadius: 2, px: 4, py: 1.5 }}
             >
               {betNames[nextBet]}
-            </button>
+            </Button>
           )}
 
           {canRespond && (
             <>
-              <button
+              <Button
+                variant="contained"
+                color="success"
+                startIcon={<Check />}
                 onClick={onAccept}
-                className="px-4 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors"
+                sx={{ borderRadius: 2, px: 4, py: 1.5 }}
               >
                 Aceitar
-              </button>
-              <button
+              </Button>
+              <Button
+                variant="contained"
+                color="error"
+                startIcon={<Close />}
                 onClick={onDecline}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 transition-colors"
+                sx={{ borderRadius: 2, px: 4, py: 1.5 }}
               >
                 Recusar
-              </button>
+              </Button>
             </>
           )}
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 }
 
